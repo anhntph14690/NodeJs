@@ -7,10 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <script src="">
-        async function getProducts(){
-            const response = await fetch "http://localhost:3001/";
+    <script>
+        async function getProducts() {
+            const response = await fetch('http://localhost:3001/api/products');
+            const data = await response.json();
+            console.log(data);
         }
-    </script> -->
+        getProducts();
+    </script>
 </body>
 </html>
