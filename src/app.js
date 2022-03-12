@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 import productsRoute from './routes/product';
 import morgan from 'morgan';
+import mongoose from 'mongoose';
+
 
 const app = express();
 //middleware
