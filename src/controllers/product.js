@@ -52,7 +52,7 @@ export const update = async (req, res) => {
         res.json(product);
     } catch (error) {
         res.status(400).json({
-            error: "Xóa sản phẩm không thành công"
+            error: "Sửa sản phẩm không thành công"
         })
     }
 }
