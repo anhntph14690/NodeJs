@@ -2,9 +2,14 @@
 
 const express = require('express');
 const cors = require('cors');
-import productsRoute from './routes/product';
+
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+
+import productsRoute from './routes/product';
+import userRoute from './routes/user';
+
+
 
 
 const app = express();
@@ -18,6 +23,10 @@ app.use(express.json())
 
 //routes
 app.use("/api", productsRoute)
+app.use("/user", userRoute)
+
+
+
 
 // connection db
 mongoose.connect("mongodb://localhost:27017/we16310")
