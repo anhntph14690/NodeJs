@@ -7,6 +7,7 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 
 import productsRoute from './routes/product';
+import categoryRoute from './routes/category';
 import userRoute from './routes/user';
 
 
@@ -23,6 +24,8 @@ app.use(express.json())
 
 //routes
 app.use("/api", productsRoute)
+app.use("/api", categoryRoute)
+
 app.use("/user", userRoute)
 
 
