@@ -20,7 +20,11 @@
 
 1: Run command line
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 2: brew tap mongodb/brew
+
 3: brew install mongodb-community
+
 4: brew services start mongodb-community
+
 5: Download GUI Robo3T not Studio Robo3T
