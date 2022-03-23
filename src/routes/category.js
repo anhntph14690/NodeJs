@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { create, read } from '../controllers/category';
+import { list, create, read } from '../controllers/category';
 
 const router = Router();
 
+router.get('/category', list);
 router.post('/category', create);
 router.get('/category/:id', read);
 

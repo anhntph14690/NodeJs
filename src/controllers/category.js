@@ -2,7 +2,16 @@
 import Category from "../models/category";
 import Product from "../models/product";
 
-
+export const list = async (req, res) => {
+    try {
+        const category = await Category.find({}).exec();
+        res.json(category);
+    } catch (error) {
+        res.status(400).json({
+            error: "Không có category"
+        })
+    }
+}
 export const create = async (req, res) => {
     try {
         const category = await new Category(req.body).save();
