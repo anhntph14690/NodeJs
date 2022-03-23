@@ -19,6 +19,7 @@
 #Setup mongodb for Macos
 
 1: Run command line
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 2: brew tap mongodb/brew
