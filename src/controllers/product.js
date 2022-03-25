@@ -42,14 +42,12 @@ export const remove = async (req, res) => {
     }
 }
 export const update = async (req, res) => {
-    const condition = { id: req.params.id }
-    const update = req.body;
     try {
-        const product = await Product.findOneAndUpdate(condition, update).exec();
+        const product = await Product.findOneAndUpdate( {_id: req.params.id}, req.body, ({ new: true }) ).exec();
         res.json(product);
     } catch (error) {
         res.status(400).json({
-            error: "Xóa sản phẩm không thành công"
+            error: "Sửa sản phẩm không thành công"
         })
     }
 }

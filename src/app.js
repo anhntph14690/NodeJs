@@ -6,6 +6,9 @@ import mongoose from 'mongoose';
 
 import productRoute from './routes/product';
 import categoryRoute from './routes/category';
+import authRoute from './routes/auth';
+
+
 
 const app = express();
 // middleware
@@ -23,12 +26,14 @@ app.use(express.json())
 // });
 app.use("/api", productRoute);
 app.use("/api", categoryRoute);
+app.use("/api", authRoute);
+
 // connection db
 mongoose.connect("mongodb://localhost:27017/we16310")
     .then(() => console.log("Ket noi DB thanh cong"))
     .catch(error => console.log(error))
 // connect
-const PORT = 8000;
+const PORT = 3001;
 app.listen(PORT, () => {
     console.log("Server của bạn đang chạy cổng ", PORT);
 });
