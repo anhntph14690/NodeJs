@@ -18,6 +18,10 @@ const userSchema = new Schema({
     },
     salt: {
         type: String
+    },
+    role: {
+        type: String,
+        default: 0
     }
 }, {timestamps: true});
 

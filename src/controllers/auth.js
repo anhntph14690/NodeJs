@@ -1,54 +1,56 @@
 import User from "../models/user";
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
-    const {name, email, password } = req.body;
+    const { name, email, password } = req.body;
     try {
         const existUser = await User.findOne({ email }).exec();
         if (existUser) {
             res.status(400).json({
-                message: "Tai khoan da ton tai"
+                message: "email không tồn tại"
             })
         }
         const user = await new User({name, email, password}).save();
         res.json({
             user: {
-                _id: user.id,
+                _id: user._id,
                 email: user.email,
                 name: user.name
             }
         });
     } catch (error) {
         res.status(400).json({
-            message: "Dang ky that bai!"
+            message: "Đăng ký thất bại!"
         })
     }
 }
+
 export const login = async (req, res) => {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
     try {
-        const user = await User.findOne({email}.exec());
-        if(!User){
+        const user = await User.findOne({ email }).exec();
+        if (!user) {
             res.status(400).json({
-                message: "Email khong ton tai"
+                message: "email không tồn tại"
             })
         }
-        if(!User.authenticate(password)){
+        if (!user.authenticate(password)) {
             res.status(400).json({
-                message: "Password khong dung"
+                message: "Mật khẩu không đúng"
             })
         }
+        const token = jwt.sign({_id: user._id}, "123456", {expiresIn: '1h'})
         res.json({
+            token,
             user: {
                 _id: user._id,
                 email: user.email,
                 name: user.name
-
             }
-        })
+        });
     } catch (error) {
         res.status(400).json({
-            message: "Dang nhap that bai"
+            message: "Đăng nhập thất bại!"
         })
-
     }
 }
