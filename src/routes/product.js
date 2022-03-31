@@ -5,7 +5,8 @@ import { userById } from '../controllers/user';
 
 const router = Router();
 
-router.get('/products', checkAuth, list);
+router.get('/products', list);
+router.post('/products/', create);
 router.post('/products/:userId', requiredSigin, isAuth, isAdmin, create);
 router.get('/products/:id', checkAuth, get);
 router.delete('/products/:id', checkAuth, remove);
