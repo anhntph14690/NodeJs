@@ -22,13 +22,6 @@ app.use(express.json())
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs))
 
 // routes
-// readdirSync(__dirname + "/routes").forEach((fileName) => {
-//     import("./routes/" + fileName)
-//         .then(({ default: router }) => router.default)
-//         .then((router) => {
-//             app.use("/api", router);
-//     });
-// });
 app.use("/api", productRoute);
 app.use("/api", categoryRoute);
 app.use("/api", authRoute);
