@@ -21,7 +21,7 @@ app.use(morgan('tiny'))
 app.use(express.json())
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJSDocs))
 
-// routes
+// routes, truy cập api
 app.use("/api", productRoute);
 app.use("/api", categoryRoute);
 app.use("/api", authRoute);
