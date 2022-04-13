@@ -7,7 +7,7 @@ export const register = async (req, res) => {
         const existUser = await User.findOne({ email }).exec();
         if (existUser) {
             res.status(400).json({
-                message: "email không tồn tại"
+                message: "email đã tồn tại"
             })
         }
         const user = await new User({name, email, password}).save();
