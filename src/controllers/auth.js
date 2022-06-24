@@ -31,7 +31,7 @@ export const login = async (req, res) => {
         const user = await User.findOne({ email }).exec();
         if (!user) {
             res.status(400).json({
-                message: "email không tồn tại"
+                message: "email đã tồn tại"
             })
         }
         if (!user.authenticate(password)) {

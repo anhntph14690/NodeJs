@@ -25,20 +25,20 @@ const userSchema = new Schema({
     }
 }, {timestamps: true});
 
-userSchema.pre("save", function(next) {
+userSchema.pre("save", function(next) { //sử lý trước khi lưu vào db //"save" tham số thứ nhất..
     this.salt = uuidv4()
-    this.password = this.encryptPassword(this.password)
-    next();
+    this.password = this.encryptPassword(this.password) //k lỗi, gọi encryptPassword để mã hoá, chuyền vào password để lưu vào this.password từ model
+    next(); //nhảy bước tiếp
 });
 
-userSchema.methods = {
-    authenticate(password){
+userSchema.methods = { //tạo nhiều phương thức sử lý
+    authenticate(password){ 
         return this.password === this.encryptPassword(password)
     },
-    encryptPassword(password) {
-        if (!password) return
+    encryptPassword(password) { //tạo nhiều phương thức khác nhau
+        if (!password) return // nếu mk k tồn tại thì return k mã hoá
         try {
-            return createHmac("sha256", this.salt).update(password).digest("hex");
+            return createHmac("sha256", this.salt).update(password).digest("hex"); //"sha256" thuật toán băm mk, digest chuỗi dc mã hoá
         } catch (error) {
             console.log(error);
         }
